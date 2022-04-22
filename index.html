@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="logica.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">PREGUNTAS Y RESPUESTAS</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+    <div class="container d-flex flex-wrap justify-content-center align-content-center" style="height: 90vh;">
+        <div class="position-fixed top-10 right-100 d-flex" id="pointsZone">
+            <img src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/000000/external-coin-investment-kiranshastry-lineal-kiranshastry.png"
+                width="50" height="40" id="coin" />
+            <input type="number" name="pointswon" id="userPoints" value="0" disabled>
+        </div>
+        <div class="col-lg-7 col-md-10 col-sm-12 glass">
+
+            <div class="hide" id="game-zone">
+                <h4>Ronda 1</h4>
+                <div class="mb-2" id="pregunta-r1"></div>
+                <div id="opciones-r1"></div>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                    Continuar
+                </button>
+                <div class="modal fade" id="exampleModal1" tabindex="-3" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Considera lo siguiente</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Si tu respuesta no es correcta el juego termina y pierdes los puntos ganados, estas
+                                seguro de continuar
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" onclick="playerEnd()">Me retiro</button>
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                    onclick="selectedOption(1)">Continuemos</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+</body>
+
+</html>
