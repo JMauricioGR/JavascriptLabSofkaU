@@ -30,13 +30,13 @@
                 width="50" height="40" id="coin" />
             <input type="number" name="pointswon" id="userPoints" value="0" disabled>
         </div>
-        <div class="col-lg-7 col-md-10 col-sm-12 glass">
+        <div class="col-lg-7 col-md-10 col-sm-12 glass" id="game-zone">
 
-            <div id="game-zone">
+            <!--<div id="game-zone"> -->
                 <h4 id="level"></h4>
                 <div class="mb-2" id="question">pregunta</div>
                 <div id="options">opciones</div>
-            </div>
+            <!--</div> -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
                 Continuar
             </button>
@@ -54,7 +54,7 @@
                             seguro de continuar
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" onclick="playerEnd()">Me retiro</button>
+                            <button type="button" class="btn btn-secondary" id="btn-resign">Me retiro</button>
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
                                 id="btn-continue">Continuemos</button>
                         </div>
