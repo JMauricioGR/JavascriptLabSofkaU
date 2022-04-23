@@ -24,15 +24,15 @@ btnContinue.addEventListener('click', () => {
     let random,
         selectedOption = document.querySelector("#select-option");
 
-    if (sessionStorage.getItem('answer') != selectedOption.value ){
+    if (sessionStorage.getItem('answer') != selectedOption.value) {
         gameZone.innerHTML = 'Lo sentimos has perdido'
     }
 
-    if (sessionStorage.getItem('answer') == selectedOption.value && parseInt(sessionStorage.getItem('actualLevel')) < 5){
-        sessionStorage.setItem('actualLevel', String(parseInt(sessionStorage.getItem('actualLevel'))+1))
-        
+    if (sessionStorage.getItem('answer') == selectedOption.value && parseInt(sessionStorage.getItem('actualLevel')) < 5) {
+        sessionStorage.setItem('actualLevel', String(parseInt(sessionStorage.getItem('actualLevel')) + 1))
+
         let randomRange = sessionStorage.getItem('actualLevel')
-                
+
         switch (randomRange) { //Calculo del número aleatorio de acuerdo a la ronda en el sessionStorage ('actualLevel')
             case '2':
                 random = getRandom(9.9, 5);
@@ -55,34 +55,34 @@ btnContinue.addEventListener('click', () => {
         getOptions(random)
         totalPoints()
         sessionStorage.setItem('questionPoints', getPoints(random))
-        
+
     }
 
-    if (sessionStorage.getItem('answer') == selectedOption.value && parseInt(sessionStorage.getItem('actualLevel')) == 5){
+    if (sessionStorage.getItem('answer') == selectedOption.value && parseInt(sessionStorage.getItem('actualLevel')) == 5) {
         totalPoints()
         gameZone.innerHTML = 'Felicitaciones has GANADO $' + document.querySelector("#userPoints").value
     }
 }
 )
 
-btnResign.addEventListener('click', () => {gameZone.innerHTML = 'Felicitaciones has GANADO $' + document.querySelector("#userPoints").value})
+btnResign.addEventListener('click', () => { gameZone.innerHTML = 'Felicitaciones has GANADO $' + document.querySelector("#userPoints").value })
 
 function getQuestionAnswer(random) { //Función que obtiene una pregunta de acuerdo a un número aleatorio y la agrega al html
     let question = data[random].question,
         answer = data[random].answer;
-        
-    console.log("Pregunta: " + question + " --- Respuesta: " + answer) 
+
+    console.log("Pregunta: " + question + " --- Respuesta: " + answer)
     sessionStorage.setItem('answer', answer)
     questionZone.innerHTML = question
-    
+
 
 }
 
 function getOptions(random) { //Función que obtiene las opciones de la pregunta calculada, de acuerdo al mismo número aleatorio de la pregunta. Crea el select con estas opciones
     let options = Object.values(data[random].options)
-    
-    let htmlInsert = 
-    `<div class="row mb-1">
+
+    let htmlInsert =
+        `<div class="row mb-1">
                         <div class="input-group input-group-md m-4">
                             <div class="input-group-text input-group-md">
                                 <select class="form-select form-select-md" aria-label="Default select example" id="select-option">
@@ -98,22 +98,22 @@ function getOptions(random) { //Función que obtiene las opciones de la pregunta
                         
                     </div>
                 </div>`
-    
+
     optionsZone.innerHTML = htmlInsert
 }
 
-function getPoints(random){ //Función que retorna los puntos de la pregunta selecciona mediante un número aleatorio 
+function getPoints(random) { //Función que retorna los puntos de la pregunta selecciona mediante un número aleatorio 
     return data[random].points;
 }
 
-function totalPoints(){
+function totalPoints() {
     let allPointsWon = parseInt(sessionStorage.getItem('totalPoints')),
         questionPoints = parseInt(sessionStorage.getItem('questionPoints'));
-    
-    
+
+
     document.querySelector("#userPoints").value = allPointsWon + questionPoints
     sessionStorage.setItem('totalPoints', allPointsWon + questionPoints)
-    
+
 }
 
 function getRandom(max, min) { //Función para obtener un número aleatorio de acuerdo a valores máximos y mínimos
